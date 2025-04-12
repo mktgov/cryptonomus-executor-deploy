@@ -1,0 +1,1 @@
+def handle_webhook(data): print("Webhook recebido.")

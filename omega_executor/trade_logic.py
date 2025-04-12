@@ -1,0 +1,1 @@
+def execute_trade(): print("Executando trade...")

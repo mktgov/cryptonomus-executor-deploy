@@ -1,0 +1,10 @@
+flask
+requests
+pybit
+python-dotenv
+pandas
+scikit-learn
+joblib
+schedule
+python-telegram-bot
+matplotlib
