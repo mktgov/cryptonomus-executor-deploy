@@ -15,7 +15,7 @@ run = ["python3", "main.py"]
 deploymentTarget = "cloudrun"
 
 [workflows]
-runButton = "Run Webhook"
+runButton = "Test Webhook Request"
 
 [[workflows.workflow]]
 name = "Run"
@@ -52,6 +52,15 @@ mode = "sequential"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "python omega_executor/webhook_handler.py"
+
+[[workflows.workflow]]
+name = "Test Webhook Request"
+author = 41446915
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python test_webhook.py"
 
 [[ports]]
 localPort = 8080
