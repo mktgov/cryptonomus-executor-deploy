@@ -1,7 +1,7 @@
 import requests
 import json
 
-url = "https://82e9e3ee-dd95-4eb9-8260-d0881a88b405-00-11m9hhvza3vl0.kirk.replit.dev/"
+url = "http://0.0.0.0:8080/webhook"
 
 payload = {
     "symbol": "ETHUSDT",
