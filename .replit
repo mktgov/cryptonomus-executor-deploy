@@ -26,51 +26,6 @@ mode = "sequential"
 task = "shell.exec"
 args = "python main.py"
 
-[[workflows.workflow]]
-name = "Run Omega"
-author = 41446915
-mode = "sequential"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "python omega_executor/omega_deus_launcher.py"
-
-[[workflows.workflow]]
-name = "Test Telegram"
-author = 41446915
-mode = "sequential"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "python omega_executor/testar_telegram.py"
-
-[[workflows.workflow]]
-name = "Run Webhook"
-author = 41446915
-mode = "sequential"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "python omega_executor/webhook_handler.py"
-
-[[workflows.workflow]]
-name = "Test Webhook Request"
-author = 41446915
-mode = "sequential"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "python test_webhook.py"
-
-[[workflows.workflow]]
-name = "Test Webhook"
-author = 41446915
-mode = "sequential"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "python test_webhook.py"
-
 [[ports]]
-localPort = 8080
+localPort = 5000
 externalPort = 80

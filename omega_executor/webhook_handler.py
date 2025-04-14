@@ -3,11 +3,12 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 
-@app.route("/webhook", methods=["POST"])
+@app.route('/webhook', methods=['POST'])
 def webhook():
     data = request.json
-    print("Payload recebido:", data)
-    return jsonify({
-        "status": "sucesso",
-        "message": "Webhook processado com sucesso"
-    }), 200
+    print("Received webhook payload:", data)
+    return jsonify({'status': 'success', 'message': 'Webhook received!'}), 200
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8080)
