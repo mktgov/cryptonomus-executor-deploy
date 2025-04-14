@@ -15,7 +15,7 @@ run = ["python3", "main.py"]
 deploymentTarget = "cloudrun"
 
 [workflows]
-runButton = "Test Telegram"
+runButton = "Run Webhook"
 
 [[workflows.workflow]]
 name = "Run"
@@ -43,3 +43,12 @@ mode = "sequential"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "python omega_executor/testar_telegram.py"
+
+[[workflows.workflow]]
+name = "Run Webhook"
+author = 41446915
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python omega_executor/webhook_handler.py"
