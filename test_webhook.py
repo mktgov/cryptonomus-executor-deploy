@@ -2,7 +2,7 @@
 import requests
 import json
 
-url = "http://127.0.0.1:8080/webhook"
+url = "https://omegaexecutormododeus.mktgov.repl.co/webhook"
 payload = {
     "symbol": "ETHUSDT",
     "price": "1825.20",
