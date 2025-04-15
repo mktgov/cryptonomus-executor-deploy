@@ -9,6 +9,4 @@ schedule
 python-telegram-bot
 matplotlib
 ccxt
-python-dotenv
-flask
 gunicorn

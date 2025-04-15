@@ -1,9 +1,10 @@
-[project]
-name = "python-template"
+[tool.poetry]
+name = "cryptonomus-executor"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
-requires-python = ">=3.11"
-dependencies = [
-    "requests>=2.32.3",
-]
+authors = ["Você <seu@email.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+flask = "*"
+gunicorn = "*"
