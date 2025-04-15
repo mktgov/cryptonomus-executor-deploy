@@ -5,12 +5,13 @@ import os
 app = Flask(__name__)
 
 
+# ✅ Healthcheck para Render
 @app.route("/", methods=["GET"])
 def index():
-    # Endpoint usado pelo Render para validar se o serviço está vivo
-    return jsonify({"message": "I'M ALIVE"}), 200
+    return "I'M ALIVE", 200
 
 
+# ✅ Webhook para receber sinais
 @app.route("/webhook", methods=["GET", "POST"])
 def webhook():
     if request.method == "GET":
@@ -26,10 +27,8 @@ def webhook():
         return jsonify({"message": str(e), "status": "error"}), 500
 
 
-# 👇 ESTE BLOCO É ESSENCIAL PARA A RENDER FUNCIONAR:
+# 👇 EXECUÇÃO OBRIGATÓRIA PARA RENDER FUNCIONAR
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT",
-                              10000))  # Forçamos a porta usada pela Render
-    print(f"🔥 CRYPTONOMUS EXECUTOR ONLINE na porta {port}"
-          )  # Log visível nos eventos
+    port = int(os.environ.get("PORT", 10000))
+    print(f"🔥 CRYPTONOMUS EXECUTOR ONLINE na porta {port}")
     app.run(host="0.0.0.0", port=port)
