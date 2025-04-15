@@ -7,7 +7,8 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
 def index():
-    return jsonify({"message": "CRYPTONOMUS EXECUTOR ONLINE"}), 200
+    # Endpoint usado pelo Render para validar se o serviço está vivo
+    return jsonify({"message": "I'M ALIVE"}), 200
 
 
 @app.route("/webhook", methods=["GET", "POST"])
@@ -25,7 +26,10 @@ def webhook():
         return jsonify({"message": str(e), "status": "error"}), 500
 
 
-# 👇 ESTE BLOCO É ESSENCIAL PARA A RENDER:
+# 👇 ESTE BLOCO É ESSENCIAL PARA A RENDER FUNCIONAR:
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # Render usa variável PORT
+    port = int(os.environ.get("PORT",
+                              10000))  # Forçamos a porta usada pela Render
+    print(f"🔥 CRYPTONOMUS EXECUTOR ONLINE na porta {port}"
+          )  # Log visível nos eventos
     app.run(host="0.0.0.0", port=port)
