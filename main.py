@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from omega_executor.trade_logic import handle_trade
+import os
 
 app = Flask(__name__)
 
@@ -21,4 +22,10 @@ def webhook():
         result = handle_trade(data)
         return jsonify({"message": "Webhook recebido!", "result": result})
     except Exception as e:
-        return jsonify({"message": str(e), "status": "error"})
+        return jsonify({"message": str(e), "status": "error"}), 500
+
+
+# 👇 ESTE BLOCO É ESSENCIAL PARA A RENDER:
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))  # Render usa variável PORT
+    app.run(host="0.0.0.0", port=port)
