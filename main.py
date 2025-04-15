@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 from omega_executor.trade_logic import handle_trade
-import os
 
 app = Flask(__name__)
 
@@ -16,13 +15,10 @@ def webhook():
         return jsonify({"message": "OK"}), 200
 
     data = request.get_json()
-    print("🔔 Webhook recebido:", data)
+    print("⚠️ Webhook recebido:", data)
 
     try:
         result = handle_trade(data)
         return jsonify({"message": "Webhook recebido!", "result": result})
     except Exception as e:
         return jsonify({"message": str(e), "status": "error"})
-
-
-# não use app.run aqui — o Railway usará Gunicorn para iniciar

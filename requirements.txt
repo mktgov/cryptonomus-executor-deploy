@@ -1,4 +1,5 @@
 flask
+gunicorn
 requests
 pybit
 python-dotenv
@@ -9,4 +10,3 @@ schedule
 python-telegram-bot
 matplotlib
 ccxt
-gunicorn
