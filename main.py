@@ -5,6 +5,11 @@ import os
 app = Flask(__name__)
 
 
+@app.route("/", methods=["GET"])
+def index():
+    return jsonify({"message": "CRYPTONOMUS EXECUTOR ONLINE"}), 200
+
+
 @app.route("/webhook", methods=["GET", "POST"])
 def webhook():
     if request.method == "GET":
@@ -20,6 +25,4 @@ def webhook():
         return jsonify({"message": str(e), "status": "error"})
 
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+# não use app.run aqui — o Railway usará Gunicorn para iniciar
