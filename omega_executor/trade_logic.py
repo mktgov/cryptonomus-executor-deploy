@@ -1,5 +1,6 @@
 import os
 import ccxt
+import uuid
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -41,23 +42,23 @@ def handle_trade(data):
     signal = data["signal"].lower()
 
     try:
-        market = exchange.market(data["symbol"])  # Ex: SOL/USDT
+        market = exchange.market(data["symbol"])
         symbol = market['symbol']
-
-        # Ajuste de volume para contratos perpétuos: arredondar para 2 casas
         qty = round(volume / price, 2)
 
-        if signal == "buy":
-            order = exchange.create_market_buy_order(symbol, qty)
-        elif signal == "sell":
-            order = exchange.create_market_sell_order(symbol, qty)
+        if signal in ["buy", "sell"]:
+            # 🚨 MOCK ATIVADO
+            order = {
+                "id": str(uuid.uuid4()),
+                "symbol": symbol,
+                "side": signal,
+                "price": price,
+                "qty": qty,
+                "status": "mocked"
+            }
+            print(f"🧪 MOCK -> Ordem simulada: {order}")
         else:
             raise ValueError("Signal must be 'buy' or 'sell'.")
-
-        print(
-            f"✅ Ordem enviada: {order['id']} ({signal.upper()} {qty} {symbol})"
-        )
-        print("📦 Resposta da Bybit:", order)
 
         return {
             "status": "executed",
@@ -66,8 +67,7 @@ def handle_trade(data):
             "symbol": symbol,
             "price": price,
             "volume": qty,
-            "mode":
-            "testnet" if os.getenv("BYBIT_TESTNET") == "true" else "live"
+            "mode": "mock"
         }
 
     except Exception as e:
