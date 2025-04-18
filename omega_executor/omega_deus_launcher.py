@@ -1,1 +1,0 @@
-print("[Ω] Executor ativado: MODO DEUS OPERACIONAL")

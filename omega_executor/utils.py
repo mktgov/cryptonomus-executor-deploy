@@ -1,1 +1,0 @@
-def util_func(): return "Util ativo."
